@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    nav {
+      width: 100%;
+      background: #111111;
+      padding: 15px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    nav h2 {
+      color: #00c2c7;
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #c77700;
+    }
+
+    .hero {
+      background: teal;
+      color: white;
+      text-align: center;
+      padding: 100px 20px 80px;
+      margin-top: 60px;
+    }
+
+    .hero img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .about {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .about h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .skills {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .skills h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .skill-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .skill-box span {
+      background: #00c2c7;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .skill-box span:hover {
+      background: black;
+    }
+
+    /* Projects */
+    .projects {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .projects h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 200px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-card h3 {
+      padding: 15px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Resume Section */
+    .resume {
+      padding: 60px 20px;
+      text-align: center;
+      background: #f0f8ff;
+    }
+
+    .resume h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .resume-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .resume-section {
+      margin-bottom: 30px;
+    }
+
+    .resume-section h3 {
+      color: #00c2c7;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 5px;
+    }
+
+    .resume-item {
+      margin-bottom: 20px;
+    }
+
+    .resume-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .resume-item .date {
+      color: #777;
+      font-style: italic;
+      margin-bottom: 5px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: #c74600;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .download-btn:hover {
+      background: black;
+    }
+
+    .contact {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #c74600;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: black;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h2>MY PORTFOLIO</h2>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <img src="/my img.jpg" alt="My Photo">
+    <h1>Hi, I'm <b>poojitha</b></h1>
+    <p>Frontend Developer</p>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      I build responsive and modern websites using best practices in HTML, CSS, and JavaScript.  
+      I am passionate about design, clean code, and user experience.  
+      I constantly learn new technologies to improve my skillset and deliver great work.
+    </p>
+  </section>
+
+  <section class="skills" id="skills">
+    <h2>Skills :</h2>
+    <div class="skill-box">
+      <span>HTML5</span>
+      <span>CSS</span>
+      <span>JavaScript</span>
+      
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="/proj1.jpg" alt="Project One">
+        <h3>Development and examination of fog computing based encrypted control system</h3>
+      </div>
+      <div class="project-card">
+        <img src="/proj.webp" alt="Project Two">
+        <h3>Blockchain based logging to defeat malicious insiders..the case of remote health monitoring</h3>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="resume" id="resume">
+    <h2>My Resume</h2>
+    <div class="resume-content">
+      <div class="resume-section">
+        <h3>Education</h3>
+        <div class="resume-item">
+          <h4>Bachelor of Computer Engineering</h4>
+          <p class="date">2021 - 2025</p>
+          <p>University sri chaityanya khammam</p>
+        </div>
+        
+      <div class="resume-section">
+        
+            <li>Developed responsive web pages using HTML, CSS, and JavaScript</li>
+            <li>Collaborated with design team to implement UI/UX improvements</li>
+            <li>Participated in code reviews and team meetings</li>
+          </ul>
+        </div>
+
+        </div>
+      </div>
+      
+      <div class="resume-section">
+        <h3>Skills</h3>
+        <div class="skill-box">
+          <span>HTML5</span>
+          <span>CSS3</span>
+          <span>JavaScript</span>
+          
+        </div>
+      </div>
+      
+      <a href="/resume pooji.pdf" class="download-btn" download>Download Resume (PDF)</a>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Poojitha. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
